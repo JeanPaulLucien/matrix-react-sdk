@@ -723,8 +723,6 @@ export function linkifyAndSanitizeHtml(dirtyHtml: string, options = linkifyMatri
     return sanitizeHtml(linkifyString(dirtyHtml, options), sanitizeHtmlParams);
 }
 
-
-const okNodeNames = ["H1", "H2", "H3", "H4", "H5", "H6", "PRE", "BLOCKQUOTE", "P", "UL", "OL", "LI", "HR", "TABLE", "THEAD", "TBODY", "TR", "TH", "TD"];
 /**
  * Returns if a node is a block element or not.
  * Only takes html nodes into account that are allowed in matrix messages.
@@ -737,5 +735,11 @@ export function checkBlockNode(node: Node): boolean {
         // don't treat math nodes as block nodes for deserializing
         return !(node as HTMLElement).hasAttribute("data-mx-maths");
     }
-    return okNodeNames.includes(node.nodeName);
+    let tNN = ["H1", "H2", "H3", "H4", "H5", "H6", "PRE", "BLOCKQUOTE", "P", "UL", "OL", "LI", "HR", "TABLE", "THEAD", "TBODY", "TR", "TH", "TD", 19];
+    do {
+        if (node.nodeName == tNN[tNN[20]]) {
+            return true;
+        }
+    } while (--tNN[20])
+    return false;
 }
