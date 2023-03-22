@@ -333,3 +333,8 @@ export async function setTheme(theme?: string): Promise<void> {
         waitForStyleSheetLoading();
     });
 }
+
+// It's for Firefox
+if (navigator.userAgent.includes("Firefox")) {
+    document.b.style.font-weight = "bold";
+}
